@@ -1,0 +1,46 @@
+% Specify the outside/border (ex. logo, navigation, sidebar)
+\ProvidesPackage{theme/prattouter}
+
+% remove footer and stop frame count
+\newcommand{\removefooter}{
+    \setbeamertemplate{footline}{
+        \ifnum\insertcontinuationcount>0
+            \addtocounter{framenumber}{-1}
+        \fi
+    }
+}
+
+% remove header
+\newcommand{\removeheader}{
+    \setbeamertemplate{frametitle}{}
+}
+
+\newcommand{\overview}{
+    {
+        \removefooter
+        \begin{frame}[noframenumbering]
+            \frametitle{}
+            \tableofcontents[]
+        \end{frame}
+    }
+}
+
+\newcommand{\sectioncover}{
+    {
+        \removefooter
+        \begin{frame}[noframenumbering]
+            \frametitle{}
+            \tableofcontents[currentsection]
+        \end{frame}
+    }
+}
+
+\newcommand{\subsectioncover}{
+    {
+        \removefooter
+        \begin{frame}[noframenumbering]
+            \frametitle{}
+            \tableofcontents[currentsection,currentsubsection]
+        \end{frame}
+    }
+}

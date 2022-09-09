@@ -1,0 +1,84 @@
+% !TEX root = ./main.tex
+\ProvidesPackage{GaryMacros}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% textual mathematical operators
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\dev}{dev}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\cov}{C}
+\DeclareMathOperator{\cor}{R}
+
+% differential symbols in integrals
+\newcommand\dVolume{\text{ dV}}
+\newcommand\dArea{\text{ dA}}
+\newcommand\dTime{\text{ dt}}
+\newcommand\dPoint{{\text{ d}\bs{x}}}
+
+% miscellaneous operators
+\newcommand{\grad}{\bs{\nabla}}
+\newcommand\divergence{{\grad \cdot}}
+\newcommand{\wbigcup}{\mathop{\bigcup}\displaylimits}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\newcommand\macaulay[1]{\left<#1\right>}
+\newcommand\bs[1]{\boldsymbol{#1}}
+\newcommand\abs[1]{\left\vert{#1}\right\vert}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand\exponential[1]{\exp\left(#1\right)}
+
+% for elasticity
+\newcommand\stress{\boldsymbol{\sigma}}
+\newcommand\xstress{\widetilde{\stress}}
+\newcommand\strain{\boldsymbol{\varepsilon}}
+\newcommand\xnormal{\widetilde{\bs{n}}}
+\newcommand\normal{\bs{n}}
+\newcommand\defgrad{\bs{F}}
+
+% for fracture
+\newcommand\crackset{\Gamma}
+\newcommand\Gc{{\mathcal{G}_c}}
+
+% utility typography for consistency
+\newcommand\field[1]{\mathbb{#1}}
+\newcommand\set[1]{#1}
+\newcommand\fspace[1]{\mathcal{#1}}
+\newcommand\body{\set{\Omega}}
+\newcommand\bodyboundary{{\partial \body}}
+
+\newcommand\evalover[1]{\left\vert_{#1}\right.}
+
+\newcommand\total{\text{total}}
+\newcommand\internal{\text{internal}}
+\newcommand\external{\text{external}}
+\newcommand\fracture{\text{fracture}}
+\newcommand\elastic{\text{elastic}}
+\newcommand\critical{\text{critical}}
+\newcommand\potential{\text{potential}}
+\newcommand\plastic{\text{plastic}}
+\newcommand\trial{\text{trial}}
+\newcommand\interface{\text{interface}}
+\newcommand\inelastic{\text{inelastic}}
+
+\newcommand\activeenergy{{\left< A \right>}}
+\newcommand\inactiveenergy{{\left< I \right>}}
+
+\newcommand\plasticstrain{{\overbar{\varepsilon}^p}}
+
+% course number
+\newcommand{\course}[2]{\makebox[3em][r]{#1} \makebox[2em][l]{#2}}
+\newcommand{\contenttitle}[1]{\underline{\textbf{#1}}\vspace{0.5em}}
+
+% Style to select only points from #1 to #2 (inclusive)
+\pgfplotsset{
+    select coords between index/.style 2 args={
+        x filter/.code={
+            \ifnum\coordindex<#1\def\pgfmathresult{}\fi
+            \ifnum\coordindex>#2\def\pgfmathresult{}\fi
+        }
+    }
+}
